@@ -16,20 +16,6 @@ wss.on("connection", (ws) => {
     console.log("Client disconnected");
   });
 
-  // send mock data every 2 sec
-  const interval = setInterval(() => {
-    const data = {
-      trainId: "TRN-4521",
-      imu: {
-        x: (Math.random() * 10).toFixed(2),
-        y: (Math.random() * 10).toFixed(2),
-        z: (Math.random() * 10).toFixed(2),
-      },
-      trackStiffness: (Math.random() * 100).toFixed(2),
-      timestamp: new Date().toISOString(),
-    };
-    ws.send(JSON.stringify(data));
-  }, 2000);
 
   ws.on("close", () => clearInterval(interval));
 });
